@@ -1,4 +1,4 @@
-name: Mentor Deploy to VPS
+name: Hands-on Deploy to VPS
 
 on:
   push:
@@ -20,8 +20,8 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /home/student/mentor
+            cd /home/student/student7
             git pull origin main
-            docker build -t mentor-app .
-            docker rm -f mentor || true
-            docker run -d -p 8000:8000 --env-file /home/student/mentor/.env --name mentor mentor-app
+            docker build -t student7-app .
+            docker rm -f student7 || true
+            docker run -d -p 8007:8000 --env-file /home/student/student7/.env --name student7 student7-app
